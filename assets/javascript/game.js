@@ -44,7 +44,7 @@ function makeIntoArray(currentWord){
 	return arr;
 }
 
-function playGame(){
+function playGame(letter){
 	if(guessesLeft == 0)
 	{
 		initialize();
@@ -56,8 +56,8 @@ function playGame(){
 	}
 
 	else{
-		document.onkeyup = function(event){
-			var letter = event.key.toLowerCase();
+		// document.onkeyup = function(event){
+			var letter = letter.toLowerCase();
 			if(alphabet.indexOf(letter) > -1){
 				if(wordAsArr.indexOf(letter) > -1){
 					correctGuesses++;
@@ -75,7 +75,7 @@ function playGame(){
 					}
 				}
 			}
-		}
+		// }
 	}
 	initialize();
 
@@ -92,7 +92,8 @@ document.onkeyup = function(event){
 		document.getElementById("letsPlay").innerHTML = "Let's Play!!";
 		initialize();
 		document.getElementById("currentWord").innerHTML = wordAsDashes;
-		playGame();
-
+	}
+	else{
+		playGame(event.key);
 	}
 }
