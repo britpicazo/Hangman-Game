@@ -1,10 +1,9 @@
 body{
+	font-family: 'Special Elite', Verdana, Geneva, sans-serif;
 	color: #444444;
+
 }
 
-.container{
-	/*background-color: #a9b4c6;*/
-}
 
 .jumbotron{
 	background-color: #d5d9e0;
@@ -15,21 +14,14 @@ body{
 
 }
 
-img{
-/*	border: solid 10px #888888;*/
-	border-radius: 6px;
-}
-
-.row{
-	background-color: #d5d9e0;
-	border-radius: 6px;
-}
-
-@media screen and (max-width: 768px){
+@media screen and (max-width: 767px){
 	img{
-		width: 50%;
-
+		width: 50% !important;
 	}
+	.left{
+		padding-top: 20px;
+	}
+
 }
 
 h2{
@@ -38,26 +30,35 @@ h2{
 	color: #888888;
 }
 
-h3{
-	font-family: 'Special Elite', Verdana, Geneva, sans-serif;
-	/*color: #ffffff;*/
+img{
+	border-radius: 6px;
+	width: 100%;
 }
 
-#currentWord{
-	font-family: 'Special Elite', Verdana, Geneva, sans-serif;
-	font-size: 32px;
+#currentWord, #guessesLeft, #lettersGuessed, #wins{
+	font-size: 24px;
 }
 
-.border-between > [class*='col-']:before {
-   background: #ffffff;
-   bottom: 0;
-   content: " ";
-   left: 0;
-   position: absolute;
-   width: 10px;
-   top: 0;
+.left{
+	background-color: #d5d9e0;
+	border-radius: 6px;
 }
 
-.border-between > [class*='col-']:first-child:before {
-   display: none;
+.right{
+	padding-right: 0;
+}
+
+.row{
+	border-radius: 6px;
+}
+
+
+.row.match-my-cols {
+    overflow: hidden; 
+}
+
+.row.match-my-cols [class*="col-"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+
 }
