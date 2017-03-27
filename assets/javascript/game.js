@@ -1,7 +1,7 @@
 
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-var breeds = ["affenpinscher", "akita", "basenji", "beagle", "beauceron",   "bloodhound", "borzoi", "boxer","briard", "brittany", "bulldog", "bullmastiff","chihuahua", "collie", "dachshund", "dalmatian", "greyhound", "havanese", "leonberger", "maltese","mastiff", "newfoundland", "poodle", "pug", "retriever", "rottweiler", "saluki","samoyed", "schipperke", "setter","sloughi", "spaniel","vizsla", "weimaraner", "whippet", "xoloitzcuintil"];
+var breeds = ["affenpinscher", "akita", "basenji", "beagle", "beauceron",   "bloodhound", "borzoi", "boxer","briard", "brittany", "bulldog", "bullmastiff","chihuahua", "collie", "dachshund", "dalmatian", "greyhound", "havanese", "leonberger", "maltese","mastiff", "newfoundland", "poodle", "pug", "retriever", "rottweiler", "saluki","samoyed", "schipperke", "setter","sloughi", "spaniel", "vizsla", "weimaraner", "whippet", "xoloitzcuintil"];
 
 var gameStarted=false;
 var currentWord;
@@ -12,7 +12,6 @@ var numWins;
 var getNewWord;
 var wordPlace; //place in breeds array
 var correctGuesses; 
-var updatedWord;
 var wordAsArr=[];
 
 function initialize() {
@@ -46,7 +45,17 @@ function makeIntoArray(currentWord){
 }
 
 function playGame(){
-	if(correctGuesses < currentWord.length || guessesLeft > 0){
+	if(guessesLeft == 0)
+	{
+		initialize();
+	} 
+	else if(correctGuesses == currentWord.length){
+		numWins++;
+		document.getElementById("numWins").innerHTML = numWins;
+		initialize();
+	}
+
+	else{
 		document.onkeyup = function(event){
 			var letter = event.key.toLowerCase();
 			if(alphabet.indexOf(letter) > -1){
@@ -55,35 +64,27 @@ function playGame(){
 					displayLetter(wordAsArr.indexOf(letter));
 				}
 				else{
-					guessesLeft--;
-					document.getElementById("guessesLeft").innerHTML = guessesLeft;
-					lettersGuessed.push[letter];
-					document.getElementById("lettersGuessed").innerHTML = lettersGuessed;
-
+					if(lettersGuessed.indexOf(letter) > -1){
+						return;
+					}
+					else{
+						guessesLeft--;
+						document.getElementById("guessesLeft").innerHTML = guessesLeft;
+						lettersGuessed.push[letter];
+						document.getElementById("lettersGuessed").innerHTML = lettersGuessed;
+					}
 				}
 			}
 		}
 	}
 	initialize();
+
 }
 
 function displayLetter(indOfLetter){
-	var updatedWord = "";
-	for(i = 0; i < currentWord.length - 1; i++){
-		if(parseInt(indOfLetter) == i && i != currentWord.length -1){
-			updatedWord += currentWord[i] + " ";
-		}
-		else if(parseInt(indOfLetter) == i && i == currentWord.length -1){
-			updatedWord += currentWord[i];
-		}
-		else if(parseInt(indOfLetter) != i && i == currentWord.length -1){
-			updatedWord += "_";
-		}
-		else{
-			updatedWord += "_ ";
-		}
-	}
-	document.getElementById("currentWord").innerHTML = updatedWord;
+	var newInd = indOfLetter * 2;
+	wordAsDashes.replaceAt(newInd, currentWord[indOfLetter]);
+	document.getElementById("currentWord").innerHTML = wordAsDashes;
 }
 
 document.onkeyup = function(event){
