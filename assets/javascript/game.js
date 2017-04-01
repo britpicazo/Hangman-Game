@@ -13,6 +13,7 @@ var getNewWord;
 var wordPlace; //place in breeds array
 var correctGuesses; 
 var wordAsArr=[];
+var dashesArray = [];
 
 function initialize() {
 	gameStarted = true;
@@ -22,9 +23,10 @@ function initialize() {
 	numWins++;
 	correctGuesses = 0;
 	wordPlace = Math.floor(Math.random() * 36);
-	currentWord = breeds[wordPlace];
-	wordAsDashes = makeIntoDashes(currentWord);
-	wordAsArr =  makeIntoArray(currentWord);
+	currentWord = breeds[wordPlace];				//string
+	wordAsDashes = makeIntoDashes(currentWord);		//string
+	wordAsArr =  makeIntoArray(currentWord);		//array
+	dashesArray = makeIntoArray(wordAsDashes);		//array
 }
 
 function makeIntoDashes(word){
@@ -58,10 +60,11 @@ function playGame(letter){
 	else{
 		// document.onkeyup = function(event){
 			var letter = letter.toLowerCase();
+			console.log(letter);
 			if(alphabet.indexOf(letter) > -1){
 				if(wordAsArr.indexOf(letter) > -1){
 					correctGuesses++;
-					displayLetter(wordAsArr.indexOf(letter));
+					displayLetter(letter);
 				}
 				else{
 					if(lettersGuessed.indexOf(letter) > -1){
@@ -81,10 +84,13 @@ function playGame(letter){
 
 }
 
-function displayLetter(indOfLetter){
-	var newInd = indOfLetter * 2;
-	wordAsDashes.replaceAt(newInd, currentWord[indOfLetter]);
-	document.getElementById("currentWord").innerHTML = wordAsDashes;
+function displayLetter(letter){
+	//for each char in wordAsDashes, if matches currentWord --> display
+	for(i = 0; i < currentWord.length; i++){
+		if(letter == currentWord.charAt[i]){
+			dashesArray[i] = currentWord.charAt[i];
+		}
+	}
 }
 
 document.onkeyup = function(event){
@@ -92,8 +98,7 @@ document.onkeyup = function(event){
 		document.getElementById("letsPlay").innerHTML = "Let's Play!!";
 		initialize();
 		document.getElementById("currentWord").innerHTML = wordAsDashes;
+		console.log(currentWord);		
 	}
-	else{
-		playGame(event.key);
-	}
+	playGame(event.key);
 }
