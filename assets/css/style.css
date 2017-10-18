@@ -9,9 +9,9 @@ body{
 	background-color: #d5d9e0;
 	color: #444444;
 	font-family: 'Abril Fatface', "Times New Roman", serif;
-	margin-bottom: 10px;
-	padding-top: 2%;
-
+	margin-bottom: 1%;
+	padding-top: .5%;
+	padding-bottom: 2%;
 }
 
 @media screen and (max-width: 767px){
@@ -26,7 +26,6 @@ body{
 
 h2{
 	font-family: 'Sigmar One', Verdana, Geneva, sans-serif;
-	/*background-color: #dddddd;*/
 	color: #888888;
 }
 
@@ -35,7 +34,7 @@ img{
 	width: 100%;
 }
 
-#currentWord, #guessesLeft, #lettersGuessed, #wins{
+#currentWord, #guessesLeft, #lettersGuessed, #wins, #losses{
 	font-size: 24px;
 }
 
