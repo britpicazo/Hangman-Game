@@ -14,7 +14,7 @@ https://britpicazo.github.io/Hangman-Game/
 
 Here's a preview of the game:
 
-http://gph.is/2ysEcGs
+![alt text](http://gph.is/2ysEcGs "gif")
 
 ### Built With
 
