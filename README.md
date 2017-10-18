@@ -9,12 +9,13 @@ In this assignment, you'll create one of two possible computer games: Hangman or
 
 ### Getting Started
 
-Click on the following link to play my dog-inspired game:   
-https://britpicazo.github.io/Hangman-Game/
-
 Here's a preview of the game:
 
 ![](https://media.giphy.com/media/3ohhwNnMH3LcwvSkko/giphy.gif "gif")
+
+Click on the link to play!  
+https://britpicazo.github.io/Hangman-Game/
+
 
 ### Built With
 
